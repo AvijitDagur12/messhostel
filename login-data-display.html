@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Login Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #a0e8e0, #ffffff);
+
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .table-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: none; /* Hidden by default */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #041d53;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:hover {
+            background-color: #f1f9ff;
+        }
+        td {
+            background-color: #fafafa;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+        }
+        /* Login form styling */
+        .login-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border-left: 5px solid #007bff;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            color: #007bff;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #login-error {
+            text-align: center;
+            color: #d9534f;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Admin Login Form -->
+    <div class="login-form" id="login-form">
+        <h2>Admin Login</h2>
+        <input type="email" id="admin-email" placeholder="Email">
+        <input type="password" id="admin-password" placeholder="Password">
+        <button onclick="adminLogin()">Login</button>
+        <p id="login-error"></p>
+    </div>
+
+    <!-- Table Container for displaying login data -->
+    <div class="table-container" id="user-data-container">
+        <h2>User Login Data</h2>
+        <table id="user-data-table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="user-data-body">
+                <!-- User data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Firebase and App Script -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1ibwr3TDD1iLWcE_3m06DGQHml2UB2kI",
+            authDomain: "avijit-b5367.firebaseapp.com",
+            projectId: "avijit-b5367",
+            storageBucket: "avijit-b5367.appspot.com",
+            messagingSenderId: "358516610171",
+            appId: "1:358516610171:web:0c9a14e14b4b0beed77ede",
+            measurementId: "G-8HYLDRLMPD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Admin Login function
+        async function adminLogin() {
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            const loginError = document.getElementById('login-error');
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                // If login is successful, hide the login form and show user data
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('user-data-container').style.display = 'block';
+                fetchUserData(); // Fetch and display user data
+            } catch (error) {
+                loginError.textContent = "Login failed. Please check your credentials.";
+            }
+        }
+
+        // Attach the adminLogin function to the global window object
+        window.adminLogin = adminLogin;
+
+        // Fetch and display user login data
+        async function fetchUserData() {
+            const userDataBody = document.getElementById('user-data-body');
+            const userQuerySnapshot = await getDocs(collection(db, "login-form/login-form-data/login-user/login-user-database/login-into-id"));
+
+            userQuerySnapshot.forEach(doc => {
+                const userData = doc.data();
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${userData.email}</td>
+                    <td>${userData.timestamp.toDate().toLocaleString()}</td>
+                `;
+                userDataBody.appendChild(row);
+            });
+        }
+    </script>
+
+</body>
+</html>

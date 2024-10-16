@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* Gradient background with aqua colors */
+            background: linear-gradient(135deg, #00bcd4, #ffffff);
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Center container */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            margin: 0; /* Remove default margin */
+        }
+        .login-container {
+            max-width: 400px;
+            width: 100%; /* Full width on smaller screens */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #00796b; /* Darker aqua for contrast */
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #00bcd4; /* Aqua border */
+            box-shadow: 0 2px 5px rgba(0, 188, 212, 0.2);
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #00796b; /* Dark aqua button */
+            color: #ffffff; /* White text on button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        button:hover {
+            background-color: #004d40; /* Darker aqua on hover */
+        }
+        p {
+            text-align: center; /* Centered text */
+        }
+        a {
+            color: #00bcd4; /* Aqua link color */
+            text-decoration: none; /* Remove underline */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        #error-message {
+            color: red; /* Red color for error messages */
+            text-align: center; /* Centered error messages */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p id="error-message"></p>
+        <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+    </div>
+
+    <!-- Firebase and App Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1ibwr3TDD1iLWcE_3m06DGQHml2UB2kI",
+            authDomain: "avijit-b5367.firebaseapp.com",
+            projectId: "avijit-b5367",
+            storageBucket: "avijit-b5367.appspot.com",
+            messagingSenderId: "358516610171",
+            appId: "1:358516610171:web:0c9a14e14b4b0beed77ede",
+            measurementId: "G-8HYLDRLMPD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                
+                // Save user data in Firestore
+                await setDoc(doc(db, "login-form/login-form-data/login-user/login-user-database/login-into-id", email), {
+                    email: email,
+                    timestamp: new Date() // Add timestamp
+                });
+
+                // Redirect to Present Member Page
+                window.location.href = "present-student-page.html";
+            } catch (error) {
+                errorMessage.textContent = error.message;
+            }
+        });
+    </script>
+</body>
+</html>

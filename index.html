@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Galaxy Mess 2.0</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+      
+</head>
+<body>
+   <!-- start of making home section -->
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero fade-in-up" id="home">
+        <h1>Welcome to Sri Krishna Mess</h1>
+        <p>Your home away from home, offering <span class="dynamic-text"></span><span class="cursor">|</span></p>
+        <button onclick="location.href='room-booking-form.html'">Book Your Stay</button>
+    </div>
+    
+    <!-- Features Section -->
+    <!-- Mess Section Heading -->
+    <section id="mess">
+      <div class="mess-heading">
+          <h2>Live_Laugh_Love</h2>
+      </div>
+  
+      <!-- Mess Features Section -->
+      <div class="mess-features fade-in-up">
+          <div class="mess-feature">
+              <div class="img-container">
+                  <img src="./about-imgg.jpg" alt="Homemade Food">
+              </div>
+              <div class="hover-text">
+                  <h3>Birthday Celebration</h3>
+                  <p>Cheers to another year of joy, laughter, and unforgettable memories!</p>
+                  <span>2024</span>
+              </div>
+          </div>
+          <div class="mess-feature">
+              <div class="img-container">
+                  <img src="./roadgroup.jpg" alt="Clean Environment">
+              </div>
+              <div class="hover-text">
+                  <h3>Night Time</h3>
+                  <p>Late nights, open roads, and endless memories with friends</p>
+                  <span>2024</span>
+              </div>
+          </div>
+          <div class="mess-feature">
+              <div class="img-container">
+                  <img src="./seniorbirthday.jpg" alt="Variety of Food">
+              </div>
+              <div class="hover-text">
+                  <h3>Birthday Celebrating</h3>
+                  <p>Cheers to a senior who's been the heart of the hostel, leading with laughter and wisdom. Happy Birthday!</p>
+                  <span>Since 2020</span>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+<!-- end of features section -->
+ <!-- end of home section html -->
+  
+    <!-- start of update about section -->
+    <section id="about" class="about-section fade-in-up">
+      <h2 style="color: rgb(255, 0, 0); font-size: 50px;">About Us</h2>
+      <div class="about-content">
+          <div class="about-item left">
+              <div class="image-container">
+                  <img src="./misson-img.jpg" alt="Our Mission" class="about-image">
+              </div>
+              <div class="about-text">
+                  <h3>Our Mission</h3>
+                  <p class="fade-in">At Sri Krishna Mess, our mission is to serve delicious and nutritious meals in a warm and welcoming environment.</p>
+              </div>
+          </div>
+    
+          <div class="about-item right">
+              <div class="image-container">
+                  <img src="./masi.jpg" alt="Our Cook" class="about-image">
+              </div>
+              <div class="about-text">
+                  <h3>Our Cook</h3>
+                  <p class="fade-in">Our dedicated team works tirelessly to ensure that your dining experience is nothing short of excellent.</p>
+              </div>
+          </div>
+    
+          <div class="about-item left">
+              <div class="image-container">
+                  <img src="./integradients.jpg" alt="Quality Ingredients" class="about-image">
+              </div>
+              <div class="about-text">
+                  <h3>Quality Ingredients</h3>
+                  <p class="fade-in">We source only the freshest and highest quality ingredients to prepare our meals.</p>
+              </div>
+          </div>
+      </div>
+    
+      <h2 style="color: #47ff32; font-family: Verdana, Geneva, Tahoma, sans-serif;">Where Learning Meets Laughter: A Student's Journey</h2>
+      <div class="about-content">
+          <div class="about-item left">
+              <div class="image-container">
+                  <img src="./about-img.jpg" alt="Our Mission" class="about-image">
+              </div>
+              <div class="about-text">
+                  <h3>Our Mission</h3>
+                  <p class="fade-in">At our mess, our mission is to create an inclusive and supportive environment where students can thrive academically.</p>
+              </div>
+          </div>
+    
+          <div class="about-item right">
+              <div class="image-container">
+                  <img src="./aboutt.jpg" alt="Study Time" class="about-image">
+              </div>
+              <div class="about-text">
+                  <h3>Study Time</h3>
+                  <p class="fade-in">We provide comfortable study spaces, resources, and organized study groups for effective learning.</p>
+              </div>
+          </div>
+    
+          <div class="about-item left">
+              <div class="image-container">
+                  <img src="./about-imgg.jpg" alt="Birthday Celebration" class="about-image">
+              </div>
+              <div class="about-text">
+                  <h3>Birthday Celebration</h3>
+                  <p class="fade-in">Celebrating birthdays is a cherished tradition at our hostel, creating joyful memories together.</p>
+              </div>
+          </div>
+      </div>
+    
+      <!-- Modal for Image Popup -->
+      <div id="imageModal" class="modal">
+          <span class="close-button">&times;</span>
+          <img class="modal-content" id="modalImage">
+          <div id="caption"></div>
+      </div>
+    </section>
+    
+  
+    <!-- end of another about section of study -->
+<!-- end of about section -->
+    <!-- START OF SERVICES SECTION HTML-->
+    <section id="services" class="points-section fade-in-up">
+        <h2>Our Services</h2>
+        <div class="points-container">
+            <div class="point">
+                <img src="./furnished-room.jpg" alt="Fully Furnished Rooms">
+                <h3>Fully Furnished Rooms</h3>
+                <p>We provide fully furnished rooms with all the necessary amenities to make your stay comfortable.</p>
+            </div>
+    
+            <div class="point">
+                <img src="./security.png" alt="24/7 Security">
+                <h3>24/7 Security</h3>
+                <p>Our facility is equipped with round-the-clock security to ensure your safety at all times.</p>
+            </div>
+    
+            <div class="point">
+                <img src="./wi-fi.png" alt="High-Speed WiFi">
+                <h3>High-Speed WiFi</h3>
+                <p>Stay connected with our high-speed WiFi available in all rooms and common areas.</p>
+            </div>
+    
+            <div class="point">
+                <img src="./homemade-food.png" alt="Homemade Food">
+                <h3>Homemade Food</h3>
+                <p>Enjoy delicious homemade food prepared with care, available daily.</p>
+            </div>
+    
+            <div class="point">
+                <img src="./house-keep.png" alt="Housekeeping">
+                <h3>Housekeeping</h3>
+                <p>We provide housekeeping services to ensure your living space remains clean and tidy.</p>
+            </div>
+    
+            <div class="point">
+                <img src="./laundry.png" alt="Laundry Services">
+                <h3>Laundry Services</h3>
+                <p>Convenient laundry services are available to help you with your clothing needs.</p>
+            </div>
+        </div>
+    </section>
+    
+  
+    <!-- END OF SERVICES SECTION HTML-->
+
+<!-- Start of Room section -->
+<section id="rooms" class="rooms-section fade-in-up">
+  <h2 style="font-size: 3rem;color: red; font-weight: bolder;">Our Rooms</h2>
+  <div class="rooms-container">
+      <div class="room">
+          <img src="./mslm.jpg" alt="Single Room" class="room-image" onclick="openRoomImageModal(this)">
+          <h3>Single Room</h3>
+          <p>Spacious single rooms with all amenities.</p>
+          <a href="room-booking-form.html" class="book-now">Book Now</a>
+      </div>
+      <div class="room">
+          <img src="./ankit.jpg" alt="Double Room" class="room-image" onclick="openRoomImageModal(this)">
+          <h3>Double Room</h3>
+          <p>Comfortable double rooms for shared accommodation.</p>
+          <a href="room-booking-form.html" class="book-now">Book Now</a>
+
+      </div>
+      <div class="room">
+          <img src="./priya.jpg" alt="Double Room" class="room-image" onclick="openRoomImageModal(this)">
+          <h3>Triple Room</h3>
+          <p>Comfortable double rooms for shared accommodation.</p>
+          <a href="room-booking-form.html" class="book-now">Book Now</a>
+
+      </div>
+      <div class="room">
+          <img src="./myroom.jpg" alt="Deluxe Room" class="room-image" onclick="openRoomImageModal(this)">
+          <h3>Deluxe Room</h3>
+          <p>Deluxe rooms with premium features for added comfort.</p>
+          <a href="room-booking-form.html" class="book-now">Book Now</a>
+
+      </div>
+      <div class="room">
+          <img src="./double-room.png" alt="Deluxe Room" class="room-image" onclick="openRoomImageModal(this)">
+          <h3>Deluxe Room</h3>
+          <p>Deluxe rooms with premium features for added comfort.</p>
+          <a href="room-booking-form.html" class="book-now">Book Now</a>
+
+      </div>
+      <div class="room">
+          <img src="./deluxe-room.png" alt="Deluxe Room" class="room-image" onclick="openRoomImageModal(this)">
+          <h3>Deluxe Room</h3>
+          <p>Deluxe rooms with premium features for added comfort.</p>
+          <a href="room-booking-form.html" class="book-now">Book Now</a>
+      </div>
+  </div>
+</section>
+
+<!-- Modal for image popup -->
+<div id="roomImageModal" class="modal">
+  <span class="close" onclick="closeRoomImageModal()">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<!-- End ofRoom section -->
+
+<!-- Start of memory section  -->
+<section class="memory-section" id="memory fade-in-up">
+  <h2>Our Old Members</h2>
+  <p class="pt">Our old members have created beautiful memories with us. We cherish the times spent together and miss them dearly. Their presence brought joy and warmth to our community.</p>
+  <div class="memory-container">
+    <div class="memory-box old-member">
+      <img src="./Mrinmoy.jpg" alt="Old Member 1">
+      <h3>Mrinmoy Ghosh</h3>
+      <p>Email:Mrinmoyghosh123@gmail.com</p>
+      <p>Contact: 1234567890</p>
+      <p>College:Passout(BU)</p>
+      <p class="pat" style="font-weight: bold;">2021-2023</p>
+    </div>
+    <div class="memory-box old-member">
+      <img src="./koushik.jpg" alt="Old Member 2">
+      <h3>Koushik Karu</h3>
+      <p>Email:koushikkaru80@gmail.com</p>
+      <p>Contact: 098-765-4321</p>
+      <p>College:Passout(WBSU)</p>
+      <p class="pat" style="font-weight: bold;">2021-2023</p>
+    </div>
+    <div class="memory-box present-member">
+      <img src="./provatda.jpg" alt="Present Member 1">
+      <h3>Provat Chakraborty</h3>
+      <p>Email:provatchakraborty23@gmail.com</p>
+      <p>Contact: 123-123-1234</p>
+      <p>College:Passout(WBSU)</p>
+      <p class="pat" style="font-weight: bold;">2015-2023</p>
+    </div>
+    <div class="memory-box present-member">
+      <img src="./sudipghosh.jpg" alt="Present Member 2">
+      <h3>Sudip Ghosh</h3>
+      <p>Email:sudipghosh43@gmail.com</p>
+      <p>Contact: 321-321-4321</p>
+      <p>College:Passout(WBSU)</p>
+      <p class="pat" style="font-weight: bold;">2015-2022</p>
+    </div>
+    <!-- Add more memory boxes as needed -->
+  </div>
+</section>
+<!-- another section start of memory -->
+<section class="memory-section fade-in-up id="memory">
+  <div class="memory-container">
+    <div class="memory-box old-member">
+      <img src="./rakhahari.jpg" alt="Old Member 1">
+      <h3>Rakhahari Kapas</h3>
+      <p>Email:kapasrakha12@gmail.com</p>
+      <p>Contact: 1234567890</p>
+      <p>College:Passout(Adamas University)</p>
+      <p class="pat" style="font-weight: bold;">2018-2022</p>
+    </div>
+    <div class="memory-box old-member">
+      <img src="./soumodip.jpg" alt="Old Member 2">
+      <h3>Soumadip Mondal</h3>
+      <p>Email:soumadip80@gmail.com</p>
+      <p>Contact: 098-765-4321</p>
+      <p>College:Passout(WBSU)</p>
+      <p class="pat" style="font-weight: bold;">2021-2023</p>
+    </div>
+    <div class="memory-box present-member">
+      <img src="./koushikda.jpg" alt="Present Member 1">
+      <h3>Koushik Samui</h3>
+      <p>Email:samuikoushik43@gmail.com</p>
+      <p>Contact: 123-123-1234</p>
+      <p>College:Passout(Adamas University)</p>
+      <p class="pat" style="font-weight: bold;">2018-2022</p>
+    </div>
+    <div class="memory-box present-member">
+      <img src="./joyda.jpg" alt="Present Member 2">
+      <h3>Mrittunjoy Maity</h3>
+      <p>Email:joymaity65@gmail.com</p>
+      <p>Contact: 321-321-4321</p>
+      <p>College:Passout(BU)</p>
+      <p class="pat" style="font-weight: bold;">2020-2022</p>
+    </div>
+    <!-- Add more memory boxes as needed -->
+  </div>
+</section>
+<section class="memory-section fade-in-up id="memory">
+  <div class="memory-container">
+    <div class="memory-box old-member">
+      <img src="./arnab.jpg" alt="Old Member 1">
+      <!-- new memory img add from here -->
+      <h3>Arnab Banarzee</h3>
+      <p>Email:arnab876@gmail.com</p>
+      <p>Contact: 1234567890</p>
+      <p>College:Passout(SBIHM)</p>
+      <p class="pat" style="font-weight: bold;">2020-2022</p>
+    </div>
+    <div class="memory-box old-member">
+      <img src="./arijitsaha.png" alt="Old Member 2">
+      <h3>Arijit Saha</h3>
+      <p>Email:sahaarijit80@gmail.com</p>
+      <p>Contact: 098-765-4321</p>
+      <p>College:Passout(Kingston)</p>
+      <p class="pat" style="font-weight: bold;">2018-2021</p>
+    </div>
+    <div class="memory-box present-member">
+      <img src="./uddin.png" alt="Present Member 1">
+      <h3>Munshi Jesum Uddin</h3>
+      <p>Email:munsijisum3@gmail.com</p>
+      <p>Contact: 123-123-1234</p>
+      <p>College:Passout(SBIHM)</p>
+      <p class="pat" style="font-weight: bold;">2018-2022</p>
+    </div>
+    <div class="memory-box present-member">
+      <img src="./prantick.jpg" alt="Present Member 2">
+      <h3>Prantick Samanta</h3>
+      <p>Email:samantaprantick86@gmail.com</p>
+      <p>Contact: 321-321-4321</p>
+      <p>College:Passout(Arambag College)</p>
+      <p class="pat" style="font-weight: bold;">2022-2023</p>
+    </div>
+    <!-- Add more memory boxes as needed -->
+  </div>
+</section>
+<!-- another section end of memory -->
+<!-- End of memory section  -->
+
+<!-- start of location section -->
+<section id="location" class="location-section fade-in-up">
+  <h2>Our Location</h2>
+  <p>Find us at Kajibari, Jaganathpur, Subhasnagar, Barasat, West Bengal</p>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14718.358576591736!2d88.4500778!3d22.7434889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1727504209258!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- end of location section -->
+<!-- start of colleges section -->
+<section id="nearby-colleges" class="colleges-section fade-in-up">
+  <h2 style="font-size: 3rem;color: rgb(255, 0, 0);">Nearby Colleges</h2>
+  <div class="colleges-container">
+      <div class="college">
+          <img src="./adam.jpg" alt="adamasUniversity" class="college-image">
+          <h3>Adamas University</h3>
+          <p>Location: <a href="https://adamasuniversity.ac.in/" target="_blank">Barbaria,Click</a></p>
+      </div>
+      <div class="college">
+          <img src="./kingstone.jpg" alt="Kingston Educational College" class="college-image">
+          <h3>Kingston Educational College</h3>
+          <p>Location: <a href="https://keical.edu.in/" target="_blank">Kingston,Click</a></p>
+      </div>
+      <div class="college">
+          <img src="./stmerry.avif" alt="St Mary's University" class="college-image">
+          <h3>St Mary's University</h3>
+          <p>Location: <a href="https://stmarysgroupofinstitutions.in" target="_blank">St. Mary’s,Click</a></p>
+      </div>
+      <div class="college">
+          <img src="./sbihm.jpg" alt="SBIHM" class="college-image">
+          <h3>SBIHM</h3>
+          <p>Location: <a href="https://sbihm.com" target="_blank">SBIHM, Click</a></p>
+      </div>
+      <div class="college">
+          <img src="./wbsu.png" alt="Brainer University" class="college-image">
+          <h3>West Bengal State University</h3>
+          <p>Location: <a href="https://wbsu.ac.in/web/" target="_blank">WBSU,Click</a></p>
+      </div>
+      <div class="college">
+          <img src="./BRAINWARE.jpeg" alt="Brainer University" class="college-image">
+          <h3>Brainware University</h3>
+          <p>Location: <a href="https://www.brainwareuniversity.ac.in" target="_blank">Brainer,Click</a></p>
+      </div>
+      
+  </div>
+</section>
+
+<!-- end of colleges section -->
+<!-- start developer contact section -->
+<section id="developers" class="developers-section">
+  <h2>Meet Our Developers</h2>
+  <div class="developers-container">
+      <div class="developer">
+          <img src="./devpritam.jpg" alt="Developer 1" class="developer-image">
+          <h3>Pritam Kapas</h3>
+          <p>Email: <a href="mailto:pritam60@gmail.com">pritam60@gmail.com</a></p>
+          <div class="social-links">
+              <a href="https://www.linkedin.com/in/developer1" target="_blank">
+                  <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/developer1" target="_blank">
+                  <i class="fab fa-github"></i> GitHub
+              </a>
+          </div>
+      </div>
+
+      <div class="developer">
+          <img src="./devavi.jpg" alt="Developer 2" class="developer-image">
+          <h3>Avijit Dagur</h3>
+          <p>Email: <a href="mailto:avijitdagur65@gmail.com">avijitdagur65@gmail.com</a></p>
+          <div class="social-links">
+              <a href="https://www.linkedin.com/in/developer2" target="_blank">
+                  <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/avijit89-boop/avi" target="_blank">
+                  <i class="fab fa-github"></i> GitHub
+              </a>
+          </div>
+      </div>
+
+      <div class="developer">
+          <img src="./devpriya.jpg" alt="Developer 3" class="developer-image">
+          <h3>Priyabrata Bairagi</h3>
+          <p>Email: <a href="mailto:priya765@gmail.com">priya765@gmail.com</a></p>
+          <div class="social-links">
+              <a href="https://www.linkedin.com/in/developer3" target="_blank">
+                  <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/developer3" target="_blank">
+                  <i class="fab fa-github"></i> GitHub
+              </a>
+          </div>
+      </div>
+  </div>
+</section>
+
+  
+<!-- end of developer section -->
+
+
+ <!-- start of contact section -->
+ <section id="contact" class="fade-in-up">
+ <div class="quick-links-container">
+    <h1 id="quick-link">Quick Links</h1>
+    <div class="button-container">
+        <a href="contact.html" class="btn">Contact Us</a>
+        <a href="./adim-main-details.html" class="btn">Admin Login</a>
+        <a href="./register.html" class="btn">Register/Login</a>
+        <a href="./room-booking-form.html" class="btn">Book Now</a>
+    </div>
+</div>
+</section>
+    <!-- end of contact section -->
+
+    <footer>
+        <p>&copy;North 24 Pargana,Barasat,Kajibari. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>

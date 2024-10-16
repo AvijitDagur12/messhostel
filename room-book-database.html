@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #24ebeb;
+        }
+
+        h2 {
+            text-align: center;
+            color: #deff06;
+            padding: 20px 0;
+            margin: 0;
+            background-color: #083144;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Admin form style */
+        .admin-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 2px 4px rgba(17, 22, 187, 0.1);
+        }
+
+        .admin-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .admin-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .admin-form button:hover {
+            background-color: #45a049;
+        }
+
+        /* Room bookings table style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #ffffff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: rgb(0, 0, 0);
+        }
+
+        th {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+        }
+
+        tr:hover {
+           background-color: rgb(204, 204, 238);
+           color: white;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Admin Room Booking Verification</h2>
+    <div class="admin-form">
+        <input type="email" id="adminEmail" placeholder="Admin Email" required>
+        <input type="password" id="adminPassword" placeholder="Admin Password" required>
+        <button id="loginButton">Login</button>
+        <div id="loginError" style="color: red; display: none;">Invalid email or password.</div>
+    </div>
+
+    <h2>Room Bookings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Duration</th>
+                <th>Room Type</th>
+                <th>Decision</th>
+                <th>Room ID</th>
+            </tr>
+        </thead>
+        <tbody id="bookingsTableBody">
+            <!-- Booking rows will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1ibwr3TDD1iLWcE_3m06DGQHml2UB2kI",
+            authDomain: "avijit-b5367.firebaseapp.com",
+            projectId: "avijit-b5367",
+            storageBucket: "avijit-b5367.appspot.com",
+            messagingSenderId: "358516610171",
+            appId: "1:358516610171:web:0c9a14e14b4b0beed77ede",
+            measurementId: "G-8HYLDRLMPD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Admin login logic
+        document.getElementById('loginButton').addEventListener('click', async () => {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                document.querySelector('.admin-form').style.display = 'none'; // Hide login form
+                fetchRoomBookings(); // Fetch bookings after successful login
+            } catch (error) {
+                document.getElementById('loginError').style.display = 'block'; // Show error
+            }
+        });
+
+        // Fetching room bookings from Firestore
+        async function fetchRoomBookings() {
+            const q = query(collection(db, "room-bookings"), orderBy("timestamp", "asc"));
+            const querySnapshot = await getDocs(q);
+            const bookingsTableBody = document.getElementById('bookingsTableBody');
+            bookingsTableBody.innerHTML = ''; // Clear existing data
+
+            querySnapshot.forEach((doc) => {
+                const bookingData = doc.data();
+                const bookingId = doc.id; // Get the Firestore document ID
+
+                const row = `
+                    <tr>
+                        <td>${bookingData.name}</td>
+                        <td>${bookingData.email}</td>
+                        <td>${bookingData.phone}</td>
+                        <td>${bookingData.duration}</td>
+                        <td>${bookingData.roomType}</td>
+                        <td>${bookingData.decision}</td>
+                        <td>${bookingId}</td> <!-- Display the document ID -->
+                    </tr>
+                `;
+                bookingsTableBody.innerHTML += row; // Append row
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(90deg, #a0e8e0, #d4f1ff);
+        }
+
+        h1 {
+            text-align: center;
+            color: #150542;
+            background-color: #2aff3f;
+            padding: 20px;
+            margin: 0;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button-container button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #0d186e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #ff5c4d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .button-container button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Adding some background colors and gradients */
+        body {
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        }
+
+        .container {
+            background: linear-gradient(90deg, #a0e8e0, #1479fc);
+
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Admin Page</h1>
+    
+    <div class="container">
+        <div class="button-container">
+            <button onclick="location.href='combine.html'">Contact Us Database</button>
+            <button onclick="location.href='room-book-database.html'">Room Book Database</button>
+            <button onclick="location.href='login-data-display.html'">Login Data Base</button>
+        </div>
+    </div>
+
+</body>
+</html>

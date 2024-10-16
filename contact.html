@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Contact Form</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             background: linear-gradient(90deg, #98f0e0, #ffffff);
+
+             margin: 0;
+             padding: 20px;
+         }
+ 
+         h2 {
+             text-align: center;
+             color: #06e70d; /* Green color for the heading */
+             font-size: 2rem;
+         }
+ 
+         form {
+             background-color: #ffffff;
+             border-radius: 8px;
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+             padding: 20px;
+             max-width: 400px;
+             margin: auto;
+         }
+ 
+         label {
+             font-weight: bold;
+             color: #333;
+         }
+ 
+         input[type="text"],
+         input[type="email"],
+         input[type="tel"],
+         textarea {
+             width: 100%;
+             padding: 10px;
+             margin: 10px 0;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+             box-sizing: border-box; /* Ensure padding is included in width */
+         }
+ 
+         textarea {
+             resize: vertical; /* Allow vertical resize only */
+             height: 100px;
+         }
+ 
+         button {
+             background-color: #0e074f; /* Green button */
+             color: white;
+             padding: 10px;
+             border: none;
+             border-radius: 4px;
+             cursor: pointer;
+             width: 100%;
+             margin: 10px 0; /* Add margin for spacing */
+         }
+ 
+         button:hover {
+             background-color: #45a049; /* Darker green on hover */
+         }
+ 
+         .admin-signup-buttons {
+             display: flex; /* Use flexbox for horizontal alignment */
+             justify-content: center; /* Center the buttons */
+             margin-top: 20px; /* Add top margin */
+         }
+ 
+         .admin-signup-buttons button {
+             background-color: rgb(43, 111, 247); /* Yellow background for the buttons */
+             color: rgb(17, 8, 57); /* Black text for better contrast */
+             width: 48%; /* Set width for two buttons in one line */
+             margin: 0 1%; /* Margin for spacing between buttons */
+             font-weight: bold;
+         }
+ 
+         .admin-signup-buttons button:hover {
+             background-color: gold; /* Change to gold on hover */
+         }
+ 
+         @media (max-width: 500px) {
+             form {
+                 max-width: 95%; /* Full width on smaller screens */
+             }
+         }
+     </style>
+ </head>
+ <body>
+ 
+     <h2>Contact Us</h2>
+     <form id="contactForm">
+         <label for="name">Name:</label>
+         <input type="text" id="name" name="name" required>
+ 
+         <label for="email">Email:</label>
+         <input type="email" id="email" name="email" required>
+ 
+         <label for="phone">Phone Number:</label>
+         <input type="tel" id="phone" name="phone" required>
+ 
+         <label for="message">Message:</label>
+         <textarea id="message" name="message" required></textarea>
+         
+         <button type="submit">Submit</button>
+     </form>
+ 
+     <!-- Admin Login and Sign Up Buttons -->
+     <div class="admin-signup-buttons">
+         <button onclick="window.location.href='combine.html'">Admin Login</button>
+         <button onclick="window.location.href='signup.html'">Sign Up</button>
+     </div>
+ 
+     <!-- Include Firebase SDKs -->
+     <script type="module">
+         // Import Firebase functions
+         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+         import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+ 
+         // Firebase configuration
+         const firebaseConfig = {
+             apiKey: "AIzaSyD1ibwr3TDD1iLWcE_3m06DGQHml2UB2kI",
+             authDomain: "avijit-b5367.firebaseapp.com",
+             projectId: "avijit-b5367",
+             storageBucket: "avijit-b5367.appspot.com",
+             messagingSenderId: "358516610171",
+             appId: "1:358516610171:web:0c9a14e14b4b0beed77ede",
+             measurementId: "G-8HYLDRLMPD"
+         };
+ 
+         // Initialize Firebase
+         const app = initializeApp(firebaseConfig);
+         const db = getFirestore(app);
+ 
+         // Handle form submission
+         document.getElementById('contactForm').addEventListener('submit', async (event) => {
+             event.preventDefault(); // Prevent page reload
+ 
+             // Get form values
+             const name = document.getElementById('name').value;
+             const email = document.getElementById('email').value;
+             const phone = document.getElementById('phone').value; // Get phone number
+             const message = document.getElementById('message').value;
+ 
+             try {
+                 // Add a new document with a generated ID in Firestore at the correct path
+                 const docRef = await addDoc(collection(db, "contact-form", "contactdatastore", "contact-data-storing"), {
+                     Name: name,
+                     Email: email,
+                     Phone: phone, // Include phone number in the data
+                     Message: message,
+                     Timestamp: Timestamp.now()
+                 });
+                 
+                 alert("Form submitted successfully!");
+ 
+                 // Clear the form
+                 document.getElementById('contactForm').reset();
+             } catch (error) {
+                 console.error("Error adding document: ", error);
+                 alert("Error submitting form: " + error.message);
+             }
+         });
+     </script>
+ 
+ </body>
+ </html>
+ 
